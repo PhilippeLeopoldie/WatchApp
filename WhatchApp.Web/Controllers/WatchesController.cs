@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using WhatchApp.Web.Models;
 using WhatchApp.Web.Services;
 
 namespace WhatchApp.Web.Controllers;
@@ -15,6 +16,17 @@ public class WatchesController : Controller
     {
         var model = watchService.GetById(id);
         return View(model);
+    }
+
+    [HttpGet("/Create")]
+    public IActionResult Create() => View();
+
+    [HttpPost("/Create")]
+    public IActionResult Create(Watch watch)
+    {
+        if (!ModelState.IsValid) return View();
+        watchService.Add(watch);
+        return RedirectToAction(nameof(Index));
     }
     
 }
