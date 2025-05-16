@@ -9,29 +9,39 @@
         <link rel="stylesheet" href="https://unpkg.com/@@picocss/pico@@latest/css/pico.classless.min.css">
     </head>
     <body>
+        <style>
+            li {
+                color: red;
+                
+            }
+        </style>
         <form asp-controller="Watches" asp-action="Create">
             <label asp-for="Name"></label>
             <input asp-for="Name"/>
             <span asp-validation-for="Name" style="color:red"></span>
             <br/>
+            <br/>
             <label asp-for="Description" ></label>
             <input asp-for="Description" />
-        <span asp-validation-for="Description" style="color:red"></span>
-            <br />
+            <span asp-validation-for="Description" style="color:red"></span>
+            <br/>
+            <br/>
             <label asp-for="Price" ></label>
             <input asp-for="Price" />
         <span asp-validation-for="Price" style="color:red"></span>
-            <br />
+            <br/>
+        <br />
             <label asp-for="ReferenceNumber" ></label>
             <input asp-for="ReferenceNumber" />
         <span asp-validation-for="ReferenceNumber" style="color:red"></span>
-            <br />
+            <br/>
+            <br/>
             <input type="submit" value="Post"/>
             
         </form>
         <br/>
-    <div asp-validation-summary="All" style="color:red"></div>
+    <div asp-validation-summary="All" style="validationSummary"></div>
         <br/>
-        <a asp-controller="Watches" asp-action="Index">[Home]</a>/>
+        <a asp-controller="Watches" asp-action="Index">[Home]</a>
     </body>
     </html>
