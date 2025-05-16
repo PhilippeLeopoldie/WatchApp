@@ -9,5 +9,12 @@ public class WatchesController : Controller
 
     [HttpGet("")]
     public IActionResult Index() => View(watchService.GetAll());
+
+    [HttpGet("details/{id}")]
+    public IActionResult Details(int id)
+    {
+        var model = watchService.GetById(id);
+        return View(model);
+    }
     
 }
