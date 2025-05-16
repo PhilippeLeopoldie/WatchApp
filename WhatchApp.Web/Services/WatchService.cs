@@ -5,7 +5,7 @@ namespace WhatchApp.Web.Services;
 
 public class WatchService
 {
-    private static List<Watch> watches =
+    public List<Watch> watches =
     [
         new Watch()
         {
@@ -22,16 +22,12 @@ public class WatchService
         }
     ];
 
-    private int nextId = watches.Count() == 0 ? 1 : watches.Max(watch => watch.Id)+1;
 
     public IEnumerable<Watch> GetAll() => watches.OrderBy(watch => watch.Name).ToArray();
 
     public Watch? GetById(int id) => watches.SingleOrDefault(watch => watch.Id == id);
 
-    public void Add(Watch watch)
-    {
-        watch.Id = nextId;
-        watches.Add(watch);
-    }
+    public void Add(Watch watch) => watches.Add(watch);
+    
 
 }
