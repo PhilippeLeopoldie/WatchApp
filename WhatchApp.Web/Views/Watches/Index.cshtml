@@ -1,0 +1,22 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using WhatchApp.Web.Models
+@using WhatchApp.Web.Controllers;
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <ul>
+        @foreach (Watch watch in Model)
+        {
+            <li>
+                @watch.Name
+            </li>
+        }
+    </ul>
+
+
+</body>
+</html>
