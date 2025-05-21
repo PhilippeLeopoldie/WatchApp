@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://unpkg.com/@@picocss/pico@@latest/css/pico.classless.min.css">
+</head>
+<body>
+    <nav style="width: 10rem;">
+        <a asp-controller="Watches" asp-action="Create">Add a watch</a>
+        <a asp-controller="Watches" asp-action="Index">Home</a>
+    </nav>
+    <div>
+        <h2>@ViewBag.Title</h2>
+        @RenderBody()
+    </div>
+</body>
+</html>

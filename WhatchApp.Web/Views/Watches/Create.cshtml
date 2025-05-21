@@ -1,13 +1,9 @@
-﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers 
-@using WhatchApp.Web.Controllers
-@model WhatchApp.Web.Models.Watch
+﻿@model Watch
 <!DOCTYPE html>
     <html>
-    <head>
-        <title>Add watch</title>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-        <link rel="stylesheet" href="https://unpkg.com/@@picocss/pico@@latest/css/pico.classless.min.css">
-    </head>
+    @{
+        ViewBag.Title = "Add a watch";
+    }
     <body>
         <style>
             li {
@@ -40,8 +36,7 @@
             
         </form>
         <br/>
-    <div asp-validation-summary="All" style="validationSummary"></div>
+            <div asp-validation-summary="All" style="validationSummary"></div>
         <br/>
-        <a asp-controller="Watches" asp-action="Index">[Home]</a>
     </body>
     </html>
