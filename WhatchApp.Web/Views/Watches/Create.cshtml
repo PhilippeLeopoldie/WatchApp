@@ -1,10 +1,7 @@
 ﻿@model CreateVM
-<!DOCTYPE html>
-    <html>
     @{
         ViewBag.Title = "Add a watch";
     }
-    <body>
         <style>
             li {
                 color: red;
@@ -24,7 +21,7 @@
             <br/>
             <label asp-for="Price" ></label>
             <input asp-for="Price" />
-        <span asp-validation-for="Price" style="color:red"></span>
+            <span asp-validation-for="Price" style="color:red"></span>
             <br/>
         <br />
             <label asp-for="ReferenceNumber" ></label>
@@ -38,5 +35,3 @@
         <br/>
             <div asp-validation-summary="All" style="validationSummary"></div>
         <br/>
-    </body>
-    </html>
