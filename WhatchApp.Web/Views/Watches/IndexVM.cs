@@ -1,4 +1,6 @@
-﻿namespace WhatchApp.Web.Views.Watches;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace WhatchApp.Web.Views.Watches;
 
 public class IndexVM
 {
@@ -8,7 +10,11 @@ public class IndexVM
         public required int Id { get; set; }
         public required string Name { get; set; }
         public required string Description { get; set; }
+
+        [Display(Name=" Price €")]
         public required decimal Price { get; set; }
+
+        [Display(Name = "Ref")]
         public required string ReferenceNumber { get; set; }
     }
 }

@@ -2,6 +2,7 @@
 using Microsoft.Extensions.FileSystemGlobbing;
 using WhatchApp.Web.Models;
 using WhatchApp.Web.Services;
+using WhatchApp.Web.Views.Watches;
 
 namespace WhatchApp.Web.Controllers;
 
@@ -10,7 +11,22 @@ public class WatchesController : Controller
     static WatchService watchService = new WatchService();
 
     [HttpGet("")]
-    public IActionResult Index() => View(watchService.GetAll());
+    public IActionResult Index()
+    {
+        var model = watchService.GetAll();
+        var viewModel = new IndexVM()
+        {
+            WatchVMs = model.Select(watch => new IndexVM.WatchVM()
+            {
+                Id = watch.Id,
+                Name = watch.Name,
+                Description = watch.Description,
+                Price = watch.Price,
+                ReferenceNumber = watch.ReferenceNumber,
+            }).ToArray()
+        };
+        return View(viewModel);
+    }
 
     [HttpGet("details/{id}")]
     public IActionResult Details(int id)
@@ -23,10 +39,18 @@ public class WatchesController : Controller
     public IActionResult Create() => View();
 
     [HttpPost("/Create")]
-    public IActionResult Create(Watch watch)
+    public IActionResult Create(CreateVM viewModel)
     {
         if (!ModelState.IsValid) return View();
-        watch.Id = watchService.watches.Count() == 0 ? 1 : watchService.watches.Max(watch => watch.Id) + 1;
+        var watch = new Watch()
+        {
+            Id = watchService.watches.Count() == 0 ? 1 : watchService.watches.Max(watch => watch.Id) + 1,
+            Name = viewModel.Name,
+            Price = viewModel.Price,
+            Description = viewModel.Description,
+            ReferenceNumber = viewModel.ReferenceNumber,
+        };
+           
         watchService.Add(watch);
         return RedirectToAction(nameof(Index));
     }
