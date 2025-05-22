@@ -1,13 +1,7 @@
-﻿<!DOCTYPE html>
-    <html>
-
-    @{
-        ViewBag.Title = "Details";
-    }
-    <body>
-        <h3>@Model.Name</h3>
-        <p>Description: <i>@Model.Description</i></p>
-        <p>Price: <i>@Model.Price $</i></p>
-        <p>Ref: <i>@Model.ReferenceNumber</i></p>
-    </body>
-    </html>
+﻿@{
+     ViewBag.Title = "Details";
+}
+<h3>@Model.Name</h3>
+<p>Description: <i>@Model.Description</i></p>
+<p>Price: <i>@Model.Price €</i></p>
+<p>Ref: <i>@Model.ReferenceNumber</i></p>

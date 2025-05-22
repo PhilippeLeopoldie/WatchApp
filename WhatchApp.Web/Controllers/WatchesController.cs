@@ -20,9 +20,6 @@ public class WatchesController : Controller
             {
                 Id = watch.Id,
                 Name = watch.Name,
-                Description = watch.Description,
-                Price = watch.Price,
-                ReferenceNumber = watch.ReferenceNumber,
             }).ToArray()
         };
         return View(viewModel);
@@ -32,7 +29,15 @@ public class WatchesController : Controller
     public IActionResult Details(int id)
     {
         var model = watchService.GetById(id);
-        return View(model);
+        if (model == null) return RedirectToAction("Index");
+        var modelVM = new DetailsVM()
+        {
+            Name = model.Name,
+            Description = model.Description,
+            Price = model.Price,
+            ReferenceNumber = model.ReferenceNumber,
+        };
+        return View(modelVM);
     }
 
     [HttpGet("/Create")]
