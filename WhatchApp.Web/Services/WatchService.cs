@@ -3,7 +3,7 @@ using WhatchApp.Web.Models;
 
 namespace WhatchApp.Web.Services;
 
-public class WatchService
+public class WatchService : IService
 {
     public List<Watch> watches =
     [
@@ -27,7 +27,10 @@ public class WatchService
 
     public Watch? GetById(int id) => watches.SingleOrDefault(watch => watch.Id == id);
 
-    public void Add(Watch watch) => watches.Add(watch);
-    
+    public void Add(Watch watch)
+    {
+        watch.Id = watches.Count() == 0 ? 1 : watches.Max(watch => watch.Id) + 1;
+        watches.Add(watch);
+    }
 
 }

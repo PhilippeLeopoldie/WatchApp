@@ -6,14 +6,14 @@ using WhatchApp.Web.Views.Watches;
 
 namespace WhatchApp.Web.Controllers;
 
-public class WatchesController : Controller
+public class WatchesController(IService service) : Controller
 {
-    static WatchService watchService = new WatchService();
+    //static WatchService service = new WatchService();
 
     [HttpGet("")]
     public IActionResult Index()
     {
-        var model = watchService.GetAll();
+        var model = service.GetAll();
         var viewModel = new IndexVM()
         {
             WatchVMs = model.Select(watch => new IndexVM.WatchVM()
@@ -28,7 +28,7 @@ public class WatchesController : Controller
     [HttpGet("details/{id}")]
     public IActionResult Details(int id)
     {
-        var model = watchService.GetById(id);
+        var model = service.GetById(id);
         if (model == null) return RedirectToAction("Index");
         var modelVM = new DetailsVM()
         {
@@ -49,14 +49,13 @@ public class WatchesController : Controller
         if (!ModelState.IsValid) return View();
         var watch = new Watch()
         {
-            Id = watchService.watches.Count() == 0 ? 1 : watchService.watches.Max(watch => watch.Id) + 1,
             Name = viewModel.Name,
             Price = viewModel.Price,
             Description = viewModel.Description,
             ReferenceNumber = viewModel.ReferenceNumber,
         };
            
-        watchService.Add(watch);
+        service.Add(watch);
         return RedirectToAction(nameof(Index));
     }
     
