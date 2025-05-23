@@ -6,7 +6,7 @@ using WhatchApp.Web.Views.Watches;
 
 namespace WhatchApp.Web.Controllers;
 
-public class WatchesController(IService service) : Controller
+public class WatchesController(IWatchService service) : Controller
 {
     [HttpGet("")]
     public IActionResult Index()

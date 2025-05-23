@@ -8,7 +8,7 @@ namespace WhatchApp.Web
         {
             var builder = WebApplication.CreateBuilder(args);
             builder.Services.AddControllersWithViews();
-            builder.Services.AddSingleton<IService,WatchService>();
+            builder.Services.AddSingleton<IWatchService,WatchService>();
             var app = builder.Build();
             app.MapControllers();
             app.Run();

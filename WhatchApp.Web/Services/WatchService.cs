@@ -3,7 +3,7 @@ using WhatchApp.Web.Models;
 
 namespace WhatchApp.Web.Services;
 
-public class WatchService : IService
+public class WatchService : IWatchService
 {
     public List<Watch> watches =
     [

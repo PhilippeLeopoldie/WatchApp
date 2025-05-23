@@ -2,7 +2,7 @@
 
 namespace WhatchApp.Web.Services;
 
-public interface IService
+public interface IWatchService
 {
 
     public IEnumerable<Watch> GetAll();
