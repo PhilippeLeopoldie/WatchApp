@@ -6,7 +6,7 @@
         @foreach (var watch in Model.WatchVMs)
         {
             <li>
-                <a asp-controller="Watches" asp-action="Details"  asp-route-id="@watch.Id">@watch.Name</a>
+            <a asp-controller="Watches" asp-action="Details" asp-route-id="@watch.Id">@watch.Name - @watch.Price €</a>
             </li>
         }
     </ul>

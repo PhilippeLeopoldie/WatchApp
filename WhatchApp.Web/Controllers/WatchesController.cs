@@ -18,6 +18,7 @@ public class WatchesController(IService service) : Controller
             {
                 Id = watch.Id,
                 Name = watch.Name,
+                Price = watch.Price,
             }).ToArray()
         };
         return View(viewModel);
