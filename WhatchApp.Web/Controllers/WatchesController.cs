@@ -8,8 +8,6 @@ namespace WhatchApp.Web.Controllers;
 
 public class WatchesController(IService service) : Controller
 {
-    //static WatchService service = new WatchService();
-
     [HttpGet("")]
     public IActionResult Index()
     {
